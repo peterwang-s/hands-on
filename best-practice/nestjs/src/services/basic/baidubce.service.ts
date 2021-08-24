@@ -1,4 +1,5 @@
-import { Injectable, Logger, HttpService } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { BosClient, Auth } from '@baiducloud/sdk';
 
 @Injectable()
@@ -26,15 +27,15 @@ export class BaiduBceService {
    * @returns
    */
   async generateAuthorization(): Promise<any> {
-    let clientAuth: Auth = new Auth(
+    const clientAuth: Auth = new Auth(
       process.env.bos_access_key, //您的AccessKey
       process.env.bos_secret_access_secret, //您的SecretAccessKey
     );
 
     // console.log("clientAuth", clientAuth);
-    let serverTimestamp = new Date().getTime();
-    let timeOffset = serverTimestamp - Date.now();
-    let revisionTimestamp = Date.now() + (timeOffset || 0);
+    const serverTimestamp = new Date().getTime();
+    const timeOffset = serverTimestamp - Date.now();
+    const revisionTimestamp = Date.now() + (timeOffset || 0);
     this.Authorization = clientAuth.generateAuthorization(
       'POST',
       '/v2/cache/purge',

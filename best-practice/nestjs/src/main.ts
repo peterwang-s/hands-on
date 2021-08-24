@@ -4,7 +4,7 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 import * as hbs from 'hbs';
 
-import config from './config/index'
+import config from './config/index';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -18,8 +18,8 @@ async function bootstrap() {
   //   layoutDir: join(__dirname, '../src', 'views/layouts'),
   //   partialsDir: join(__dirname, '../src', 'views/partials')
   // });
-  await app.listen(config.app.port).then(()=>{
-    console.log(`service start with port: ${config.app.port}`)
+  await app.listen(config.app.port).then(() => {
+    console.log(`service start with port: ${config.app.port}`);
   });
 }
 bootstrap();

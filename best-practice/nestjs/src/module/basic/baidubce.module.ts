@@ -1,4 +1,5 @@
-import { Module, HttpModule } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { BosClient } from '@baiducloud/sdk';
 import { BaiduBceCtl } from '../../controllers/basic/baidubce.controller';
