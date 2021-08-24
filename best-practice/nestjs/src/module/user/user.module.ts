@@ -3,30 +3,30 @@ import { NestjsQueryMongooseModule } from '@nestjs-query/query-mongoose';
 import { Module } from '@nestjs/common';
 import { UserEntity, UserEntitySchema } from './user.entity';
 import { UserDTO } from './user.dto';
-@Module({
+
+const userService = NestjsQueryGraphQLModule.forFeature({
   imports: [
-    NestjsQueryGraphQLModule.forFeature({
-      imports: [
-        NestjsQueryMongooseModule.forFeature([
-          {
-            document: UserEntity,
-            name: UserEntity.name,
-            schema: UserEntitySchema,
-          },
-        ]),
-      ],
-      resolvers: [
-        {
-          DTOClass: UserDTO,
-          EntityClass: UserEntity,
-          // LoginResponseDTOClass: LoginResponseDTO,
-          //   CreateDTOClass: LoginResponseDTO,
-          //   UpdateDTOClass: SubTaskUpdateDTO,
-          enableAggregate: true,
-        },
-      ],
-    }),
+    NestjsQueryMongooseModule.forFeature([
+      {
+        document: UserEntity,
+        name: UserEntity.name,
+        schema: UserEntitySchema,
+      },
+    ]),
   ],
-  exports: [],
+  resolvers: [
+    {
+      DTOClass: UserDTO,
+      EntityClass: UserEntity,
+      // LoginResponseDTOClass: LoginResponseDTO,
+      //   CreateDTOClass: LoginResponseDTO,
+      //   UpdateDTOClass: SubTaskUpdateDTO,
+      enableAggregate: true,
+    },
+  ],
+});
+@Module({
+  imports: [userService],
+  exports: [userService],
 })
 export class UserModule {}
