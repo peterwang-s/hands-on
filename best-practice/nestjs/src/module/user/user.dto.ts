@@ -1,12 +1,20 @@
-import { Field, InputType, ObjectType } from '@nestjs/graphql';
+import {
+  Field,
+  InputType,
+  ObjectType,
+  GraphQLISODateTime,
+  ID,
+} from '@nestjs/graphql';
+import { FilterableField, IDField } from '@nestjs-query/query-graphql';
 import { IsString, IsDate } from 'class-validator';
-@InputType()
+
+@ObjectType('user')
 export class UserDTO {
-  @Field()
+  @IDField(() => ID)
   @IsString()
   id!: string;
 
-  @Field()
+  @FilterableField({ allowedComparisons: ['eq', 'like', 'notLike'] })
   @IsString()
   username!: string;
 
@@ -14,11 +22,11 @@ export class UserDTO {
   @IsString()
   password!: string;
 
-  @Field()
+  @Field(() => GraphQLISODateTime)
   @IsDate()
   createdAt!: Date;
 
-  @Field()
+  @Field(() => GraphQLISODateTime)
   @IsDate()
   updatedAt!: Date;
 

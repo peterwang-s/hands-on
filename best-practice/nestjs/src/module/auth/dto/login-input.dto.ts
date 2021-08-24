@@ -1,9 +1,16 @@
-import { Field, InputType } from '@nestjs/graphql';
+import {
+  Field,
+  InputType,
+  ObjectType,
+  GraphQLISODateTime,
+  ID,
+} from '@nestjs/graphql';
+import { FilterableField, IDField } from '@nestjs-query/query-graphql';
 import { IsString } from 'class-validator';
 
-@InputType()
+@ObjectType('logininput')
 export class LoginInputDTO {
-  @Field()
+  @FilterableField()
   @IsString()
   username!: string;
 
