@@ -12,17 +12,17 @@ import { AuthenticatedUser } from './auth.interfaces';
 export class AuthResolver {
   constructor(private authService: AuthService) {}
 
-  @Mutation(() => LoginResponseDTO)
-  async login(@Args('input') input: LoginInputDTO): Promise<LoginResponseDTO> {
-    const user = await this.authService.validateUser(
-      input.username,
-      input.password,
-    );
-    if (!user) {
-      throw new UnauthorizedException();
-    }
-    return this.authService.login(user);
-  }
+  // @Mutation(() => LoginResponseDTO)
+  // async login(@Args('input') input: LoginInputDTO): Promise<LoginResponseDTO> {
+  //   const user = await this.authService.validateUser(
+  //     input.username,
+  //     input.password,
+  //   );
+  //   if (!user) {
+  //     throw new UnauthorizedException();
+  //   }
+  //   return this.authService.login(user);
+  // }
 
   @UseGuards(JwtAuthGuard)
   @Query(() => UserDTO)

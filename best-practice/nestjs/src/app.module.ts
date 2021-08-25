@@ -18,6 +18,12 @@ interface ContextArgs {
 }
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: [
+        !process.env.NODE_ENV ? `.env` : `.env.${process.env.NODE_ENV || ''}`,
+      ],
+    }),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true,
@@ -31,12 +37,6 @@ interface ContextArgs {
       }),
     }),
     HttpModule,
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: [
-        process.env.NODE_ENV === 'staging' ? '.env.staging' : '.env',
-      ],
-    }),
     MongodbModule,
     // GQLModule,
     BaiduBceModule,

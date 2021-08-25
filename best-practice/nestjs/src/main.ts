@@ -6,6 +6,7 @@ import * as hbs from 'hbs';
 
 import config from './config/index';
 
+console.log(process.env.NODE_ENV);
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 

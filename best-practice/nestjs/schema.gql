@@ -1,0 +1,443 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type user {
+  id: ID!
+  username: String!
+  password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: String!
+  updatedBy: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+type UserDeleteResponse {
+  id: ID
+  username: String
+  password: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: String
+  updatedBy: String
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+type userEdge {
+  """The node containing the user"""
+  node: user!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+"""Cursor for paging through collections"""
+scalar ConnectionCursor
+
+type PageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+
+  """The cursor of the first returned record."""
+  startCursor: ConnectionCursor
+
+  """The cursor of the last returned record."""
+  endCursor: ConnectionCursor
+}
+
+type UserConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [userEdge!]!
+}
+
+type userAggregateGroupBy {
+  id: ID
+  username: String
+}
+
+type userCountAggregate {
+  id: Int
+  username: Int
+}
+
+type userMinAggregate {
+  id: ID
+  username: String
+}
+
+type userMaxAggregate {
+  id: ID
+  username: String
+}
+
+type userAggregateResponse {
+  groupBy: userAggregateGroupBy
+  count: userCountAggregate
+  min: userMinAggregate
+  max: userMaxAggregate
+}
+
+type logininput {
+  username: String!
+  password: String!
+}
+
+type LogininputDeleteResponse {
+  username: String
+  password: String
+}
+
+type logininputEdge {
+  """The node containing the logininput"""
+  node: logininput!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+type LogininputConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [logininputEdge!]!
+}
+
+type logininputAggregateGroupBy {
+  username: String
+}
+
+type logininputCountAggregate {
+  username: Int
+}
+
+type logininputMinAggregate {
+  username: String
+}
+
+type logininputMaxAggregate {
+  username: String
+}
+
+type logininputAggregateResponse {
+  groupBy: logininputAggregateGroupBy
+  count: logininputCountAggregate
+  min: logininputMinAggregate
+  max: logininputMaxAggregate
+}
+
+type Query {
+  userAggregate(
+    """Filter to find records to aggregate on"""
+    filter: userAggregateFilter
+  ): [userAggregateResponse!]!
+  user(
+    """The id of the record to find."""
+    id: ID!
+  ): user
+  users(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: userFilter = {}
+
+    """Specify to sort results."""
+    sorting: [userSort!] = []
+  ): UserConnection!
+  me: user!
+  logininputAggregate(
+    """Filter to find records to aggregate on"""
+    filter: logininputAggregateFilter
+  ): [logininputAggregateResponse!]!
+  logininput(
+    """The id of the record to find."""
+    id: ID!
+  ): logininput
+  logininputs(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: logininputFilter = {}
+
+    """Specify to sort results."""
+    sorting: [logininputSort!] = []
+  ): LogininputConnection!
+}
+
+input userAggregateFilter {
+  and: [userAggregateFilter!]
+  or: [userAggregateFilter!]
+  id: IDFilterComparison
+  username: UserUsernameFilterComparison
+}
+
+input IDFilterComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: ID
+  neq: ID
+  gt: ID
+  gte: ID
+  lt: ID
+  lte: ID
+  like: ID
+  notLike: ID
+  iLike: ID
+  notILike: ID
+  in: [ID!]
+  notIn: [ID!]
+}
+
+input UserUsernameFilterComparison {
+  eq: String
+  like: String
+  notLike: String
+}
+
+input CursorPaging {
+  """Paginate before opaque cursor"""
+  before: ConnectionCursor
+
+  """Paginate after opaque cursor"""
+  after: ConnectionCursor
+
+  """Paginate first"""
+  first: Int
+
+  """Paginate last"""
+  last: Int
+}
+
+input userFilter {
+  and: [userFilter!]
+  or: [userFilter!]
+  id: IDFilterComparison
+  username: UserUsernameFilterComparison
+}
+
+input userSort {
+  field: userSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum userSortFields {
+  id
+  username
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input logininputAggregateFilter {
+  and: [logininputAggregateFilter!]
+  or: [logininputAggregateFilter!]
+  username: StringFieldComparison
+}
+
+input StringFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: String
+  neq: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  like: String
+  notLike: String
+  iLike: String
+  notILike: String
+  in: [String!]
+  notIn: [String!]
+}
+
+input logininputFilter {
+  and: [logininputFilter!]
+  or: [logininputFilter!]
+  username: StringFieldComparison
+}
+
+input logininputSort {
+  field: logininputSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum logininputSortFields {
+  username
+}
+
+type Mutation {
+  createOneUser(input: CreateOneUserInput!): user!
+  createManyUsers(input: CreateManyUsersInput!): [user!]!
+  updateOneUser(input: UpdateOneUserInput!): user!
+  updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
+  deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
+  deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
+  createOneLogininput(input: CreateOneLogininputInput!): logininput!
+  createManyLogininputs(input: CreateManyLogininputsInput!): [logininput!]!
+  updateOneLogininput(input: UpdateOneLogininputInput!): logininput!
+  updateManyLogininputs(input: UpdateManyLogininputsInput!): UpdateManyResponse!
+  deleteOneLogininput(input: DeleteOneLogininputInput!): LogininputDeleteResponse!
+  deleteManyLogininputs(input: DeleteManyLogininputsInput!): DeleteManyResponse!
+}
+
+input CreateOneUserInput {
+  """The record to create"""
+  user: CreateUser!
+}
+
+input CreateUser {
+  id: ID
+  username: String
+  password: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: String
+  updatedBy: String
+}
+
+input CreateManyUsersInput {
+  """Array of records to create"""
+  users: [CreateUser!]!
+}
+
+input UpdateOneUserInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateUser!
+}
+
+input UpdateUser {
+  id: ID
+  username: String
+  password: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: String
+  updatedBy: String
+}
+
+input UpdateManyUsersInput {
+  """Filter used to find fields to update"""
+  filter: userUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateUser!
+}
+
+input userUpdateFilter {
+  and: [userUpdateFilter!]
+  or: [userUpdateFilter!]
+  id: IDFilterComparison
+  username: UserUsernameFilterComparison
+}
+
+input DeleteOneUserInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteManyUsersInput {
+  """Filter to find records to delete"""
+  filter: userDeleteFilter!
+}
+
+input userDeleteFilter {
+  and: [userDeleteFilter!]
+  or: [userDeleteFilter!]
+  id: IDFilterComparison
+  username: UserUsernameFilterComparison
+}
+
+input CreateOneLogininputInput {
+  """The record to create"""
+  logininput: CreateLogininput!
+}
+
+input CreateLogininput {
+  username: String
+  password: String
+}
+
+input CreateManyLogininputsInput {
+  """Array of records to create"""
+  logininputs: [CreateLogininput!]!
+}
+
+input UpdateOneLogininputInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateLogininput!
+}
+
+input UpdateLogininput {
+  username: String
+  password: String
+}
+
+input UpdateManyLogininputsInput {
+  """Filter used to find fields to update"""
+  filter: logininputUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateLogininput!
+}
+
+input logininputUpdateFilter {
+  and: [logininputUpdateFilter!]
+  or: [logininputUpdateFilter!]
+  username: StringFieldComparison
+}
+
+input DeleteOneLogininputInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteManyLogininputsInput {
+  """Filter to find records to delete"""
+  filter: logininputDeleteFilter!
+}
+
+input logininputDeleteFilter {
+  and: [logininputDeleteFilter!]
+  or: [logininputDeleteFilter!]
+  username: StringFieldComparison
+}
