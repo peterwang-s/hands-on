@@ -2,6 +2,8 @@
   "dependencies": {
     "@nestjs/cli": "^8.1.1",
     "@vue/cli": "^4.5.13",
+    "create-next-app": "^11.1.0",
+    "create-react-app": "^4.0.3",
     "gatsby-cli": "^3.5.0"
   }
 }
