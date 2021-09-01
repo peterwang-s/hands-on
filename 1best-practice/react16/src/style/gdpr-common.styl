@@ -1,0 +1,88 @@
+@import './logo.styl'
+
+html,
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+.empty-css
+    display none
+
+$miTheme = #FF9C2C
+
+$timexTheme = rgb(185,34,39)
+
+// 设置各个 APP 的主题背景色
+.mi-bg {
+    background-color: $miTheme;
+}
+.timex-bg {
+    background-color: $timexTheme !important;
+}
+
+// 设置各个 App 的 logo
+.mi-logo {
+  background-image: url($miLogo);
+}
+.zepp-logo {
+  background-image: url($zeppLogo);
+}
+.timex-logo {
+  background-image: url($timexLogo)
+}
+.amazfit-logo, .watch-logo {
+  background-image: url($amazfitLogo);
+}
+
+// 在不用 line-height 情况下设置文字垂直水平居中显示
+.text-align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align center
+}
+
+// 按钮公共部分样式
+.btn-common, .btn-common-timex {
+    position: fixed;
+    right: 0;
+    bottom: 6%;
+    left: 0;
+    width: 90%;
+    height: 3rem;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+}
+
+.btn-common {
+    margin: 0 auto;
+    font-family: NotoSansCJKsc-Regular, microsoft yahei, arial, \5b8b\4f53;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+}
+
+.btn-common-timex {
+    padding: 0 5%;
+    font-weight: 700;
+    font-family: GothamNarrow-Medium;
+    border: 1px solid #8b8b8b;
+    border-radius: 0;
+}
+
+.opacity05 {
+    opacity: 0.5;
+}
+
+.opacity {
+    opacity: 1
+}
+
+@media screen and (min-width: 500px) {
+  .btn-common, .btn-common-timex {
+    width: 360px;
+    height: 50px;
+    cursor: pointer;
+  }
+}
