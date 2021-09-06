@@ -7,6 +7,10 @@ import * as hbs from 'hbs';
 import config from './config/index';
 
 console.log(process.env.NODE_ENV);
+
+/**
+ *  NestJS 构建块（模块、服务、控制器类），还生成实体类、DTO 类以及测试 ( .spec) 文件
+ */
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 

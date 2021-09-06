@@ -16,6 +16,10 @@ interface ContextArgs {
   req?: HeadersContainer;
   connection?: { context: HeadersContainer };
 }
+
+/**
+ * 生成模块 ( nest g mo) 以保持代码组织并建立清晰的边界（对相关组件进行分组）
+ */
 @Module({
   imports: [
     ConfigModule.forRoot({
