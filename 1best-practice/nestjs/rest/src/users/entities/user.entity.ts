@@ -15,6 +15,9 @@ export class UserEntity extends Document {
   @Prop({ required: true })
   password!: string;
 
+  @Prop({ required: true })
+  salt?: string;
+
   @Prop({ default: new Date() })
   createdAt!: Date;
 

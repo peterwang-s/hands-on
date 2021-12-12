@@ -8,8 +8,8 @@ module.exports = ({ env }) => ({
         srv: env.bool('DATABASE_SRV', false),
         port: env.int('DATABASE_PORT', 27017),
         database: env('DATABASE_NAME', 'strapi-mongo'),
-        username: env('DATABASE_USERNAME', null),
-        password: env('DATABASE_PASSWORD', null),
+        username: env('DATABASE_USERNAME', "admin"),
+        password: env('DATABASE_PASSWORD', "admin"),
       },
       options: {
         authenticationDatabase: env('AUTHENTICATION_DATABASE', null),

@@ -8,12 +8,19 @@ import {
   MiddlewareConsumer,
   // RequestMethod,
 } from '@nestjs/common';
+import { NestjsQueryCoreModule } from '@nestjs-query/core';
 import { MongooseModule } from '@nestjs/mongoose';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { AuthModule } from './auth/auth.module';
+
+/**
+ * 保持代码组织并建立清晰的边界（对相关组件进行分组）
+ */
 @Module({
   imports: [
     MongooseModule.forRoot(
@@ -21,15 +28,21 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
       'mongodb://localhost:27017',
       {
         auth: {
-          username: 'nest',
-          password: 'nest',
+          username: 'admin',
+          password: 'admin',
         },
-        dbName: 'nest-mongo',
+        dbName: 'nest',
         useNewUrlParser: true,
         // useCreateIndex: true,
       },
     ),
+    JwtModule.register({
+      secret: 'nestjs-query-secret!!!',
+      signOptions: { expiresIn: '1d' },
+    }),
+    NestjsQueryCoreModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

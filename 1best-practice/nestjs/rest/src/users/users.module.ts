@@ -1,18 +1,19 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
+// import { NestjsQueryCoreModule } from '@nestjs-query/core';
 import { NestjsQueryMongooseModule } from '@nestjs-query/query-mongoose';
-import { NestjsQueryCoreModule } from '@nestjs-query/core';
-import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
-import { UserEntity, UserEntitySchema } from './entities/user.entity';
 
+// import { PassportModule } from '@nestjs/passport';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { UsersController } from './users.controller';
+import { UsersService } from './users.service';
+import { UserEntity, UserEntitySchema } from './entities/user.entity';
 @Module({
   imports: [
-    NestjsQueryCoreModule,
-    // JwtModule.register({
-    //   secret: 'nestjs-query-secret!!!',
-    //   signOptions: { expiresIn: '1d' },
-    // }),
+    JwtModule.register({
+      secret: 'nestjs-query-secret!!!',
+      signOptions: { expiresIn: '1d' },
+    }),
+    // NestjsQueryCoreModule,
     NestjsQueryMongooseModule.forFeature([
       {
         document: UserEntity,
@@ -23,5 +24,6 @@ import { UserEntity, UserEntitySchema } from './entities/user.entity';
   ],
   controllers: [UsersController],
   providers: [UsersService],
+  exports: [UsersService],
 })
 export class UsersModule {}
